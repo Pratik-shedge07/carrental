@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import { assets, menuLinks } from '../assets/assets'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 const Navbar = () => {
     const location = useLocation()
     const [open, setOpen] = React.useState(false)
+    const navigate = useNavigate()
     return (
 
         <div className={` flex items-center justify-between px-6 md:px-16 lg:px-24 x1:px-32 py-4 text-grey-600 border-b borderColor relative transition-all ${location.pathname === "/" ? "bg-light" : "bg-white"}`}>
@@ -17,6 +18,21 @@ const Navbar = () => {
                         {link.name}
                     </Link>
                 ))}
+
+                <div className='hidden lg:flex items-center border-borderColor px-3 rounded-full max-w-56'>
+                    <input type="text" className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500 " placeholder="search products" />
+
+                    <img src={assets.search_icon} alt="search"  />
+                </div>
+                <div className='flex max-sm:flex-col items-start sm:items-center gap-6'>
+
+                    <button className="Cursor-pointer" >
+                     Dashboard
+                    </button>
+                    <button className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary-dull transition-all text-white rounded-lg">
+                        login
+                    </button>
+                </div>
             </div>
 
         </div>
